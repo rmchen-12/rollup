@@ -10,7 +10,7 @@
     "y": "npm --no-git-tag-version version minor",
     "z": "npm --no-git-tag-version version patch",
     "postversion": "npm run changelog && git add . && npm run tag",
-    "prechangelog": "git add . && git cz",
+    "prechangelog": "git add . && git cz || git cz -a",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "clean": "rm -rf ./dist/ ./es/ ./lib/",
     "start": "npm run clean && cross-env NODE_ENV=development rollup -w -c ./scripts/rollup.config.js",
