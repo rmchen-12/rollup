@@ -1,0 +1,60 @@
+{
+    "name": "rollup-npm-lib",
+    "version": "1.0.0",
+    "description": "rollup打包npm库demo",
+    "main": "index.js",
+    "module": "es/index.js",
+    "scripts": {
+        "tag": "node ./build/version.js",
+        "x": "npm --no-git-tag-version version major",
+        "y": "npm --no-git-tag-version version minor",
+        "z": "npm --no-git-tag-version version patch",
+        "postversion": "npm run changelog && git add . && npm run tag",
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+        "clean": "rm -rf ./dist/ ./es/ ./lib/",
+        "easy": "npm run clean && cross-env NODE_ENV=development rollup -w -c ./build/easy.config.js",
+        "node:dev": "npm run clean && cross-env NODE_ENV=development node ./build/dev.js",
+        "node:build": "npm run clean && cross-env NODE_ENV=production node ./build/build.js",
+        "start": "npm run clean && cross-env NODE_ENV=development rollup -w -c ./build/rollup.config.js",
+        "build": "npm run clean && cross-env NODE_ENV=production rollup -c ./build/rollup.config.js",
+        "prepublishOnly": "npm run build",
+        "postpublish": "npm run clean"
+    },
+    "files": [
+        "dist",
+        "lib",
+        "es",
+        "types"
+    ],
+    "keywords": [
+        "rollup",
+        "lib"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rmchen-12/rmchen-12.git"
+    },
+    "author": "rmchen",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/plugin-transform-runtime": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "babel-eslint": "^10.1.0",
+        "conventional-changelog-cli": "^2.0.31",
+        "cross-env": "^7.0.2",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-eslint": "^7.0.0",
+        "rollup-plugin-json": "^4.0.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-serve": "^1.0.1",
+        "rollup-plugin-uglify": "^6.0.4"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.9.2",
+        "@babel/runtime-corejs2": "^7.9.2",
+        "base64-js": "^1.3.1",
+        "crypto-js": "^4.0.0"
+    }
+}
