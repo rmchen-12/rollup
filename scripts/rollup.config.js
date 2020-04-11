@@ -3,6 +3,9 @@ import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import babelPlugin from 'rollup-plugin-babel';
 import serve from 'rollup-plugin-serve';
+import visualizer from 'rollup-plugin-visualizer';
+import filesize from 'rollup-plugin-filesize';
+import progress from 'rollup-plugin-progress';
 import { uglify } from 'rollup-plugin-uglify';
 import { eslint } from 'rollup-plugin-eslint';
 
@@ -11,7 +14,7 @@ const resolveFile = function (filePath) {
     return path.join(__dirname, '..', filePath);
 };
 const isDev = process.env.NODE_ENV !== 'production';
-console.log('----------dev:', process.env.NODE_ENV, isDev);
+console.log('----------dev:', process.env.NODE_ENV);
 
 // 通过控制outputs中对应的isExternal、isUglify值来决定打包的文件是否启用external和uglify
 const outputs = [
@@ -49,7 +52,6 @@ const len = outputs.length;
 const config = outputs.map((output, i) => {
     const isUglify = output.isUglify || false;
     const isExternal = output.isExternal || false;
-    console.log('------config:', isExternal);
     return {
         input: resolveFile('src/index.js'),
         output,
@@ -76,6 +78,9 @@ const config = outputs.map((output, i) => {
                 exclude: 'node_modules/**', // 只编译我们的源代码
                 runtimeHelpers: true,
             }),
+            visualizer(),
+            filesize(),
+            progress(),
             ...(isDev && i === len - 1
                 ? [
                     serve({
@@ -91,9 +96,7 @@ const config = outputs.map((output, i) => {
         ],
         // 作用：指出应将哪些模块视为外部模块，否则会被打包进最终的代码里
         external: (id) => {
-            return !isExternal
-                ? false
-                : /@babel\/runtime/.test(id) || /lodash|base64-js|crypto-js/.test(id);
+            return !isExternal ? false : /@babel\/runtime/.test(id);
         },
     };
 });
