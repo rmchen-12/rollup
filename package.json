@@ -1,6 +1,6 @@
 {
   "name": "rollup-npm-lib",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "rollup打包npm库demo",
   "main": "index.js",
   "module": "es/index.js",
