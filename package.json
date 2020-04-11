@@ -1,6 +1,6 @@
 {
   "name": "rollup-npm-lib",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "rollup打包npm库demo",
   "main": "index.js",
   "module": "es/index.js",
@@ -10,6 +10,7 @@
     "y": "npm --no-git-tag-version version minor",
     "z": "npm --no-git-tag-version version patch",
     "postversion": "npm run changelog && git add . && npm run tag",
+    "prechangelog": "git add . && git cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "clean": "rm -rf ./dist/ ./es/ ./lib/",
     "start": "npm run clean && cross-env NODE_ENV=development rollup -w -c ./scripts/rollup.config.js",
@@ -39,7 +40,6 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "babel-eslint": "^10.1.0",
-    "conventional-changelog": "^3.1.18",
     "conventional-changelog-cli": "^2.0.31",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "3.1.0",
