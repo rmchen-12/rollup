@@ -1,3 +1,17 @@
+## [1.0.12](https://github.com/rmchen-12/rmchen-12/compare/v1.0.11...v1.0.12) (2020-04-11)
+
+
+### Bug Fixes
+
+* 测试 ([b5dba68](https://github.com/rmchen-12/rmchen-12/commit/b5dba689dc39920599f58b198c5cc6be16989604))
+
+
+### Features
+
+* test ([bc709b8](https://github.com/rmchen-12/rmchen-12/commit/bc709b88d65507df3034b71aa05bde4a82abbdfa))
+
+
+
 ## [1.0.11](https://github.com/rmchen-12/rmchen-12/compare/v1.0.10...v1.0.11) (2020-04-11)
 
 
