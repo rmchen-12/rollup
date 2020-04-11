@@ -2,7 +2,7 @@
 
 ### 操作流程为
 1. 修改本地代码
-2. git提交修改
+2. git提交修改 
    - feat：新功能（feature）
    - fix：修补bug
    - docs：文档（documentation）
