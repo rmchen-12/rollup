@@ -1,3 +1,12 @@
+## [1.0.10](https://github.com/rmchen-12/rmchen-12/compare/v1.0.9...v1.0.10) (2020-04-11)
+
+
+### Bug Fixes
+
+* 修复文档 ([20acbf2](https://github.com/rmchen-12/rmchen-12/commit/20acbf2c190f3aa516d5c9e0f0389ba49cf4d821))
+
+
+
 ## [1.0.9](https://github.com/rmchen-12/rmchen-12/compare/v1.0.8...v1.0.9) (2020-04-11)
 
 
